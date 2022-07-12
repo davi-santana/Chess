@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Chess.board;
 
 namespace Chess
 {
@@ -6,7 +6,9 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Board board = new board.Board(8, 8);
+
+            Screen.PrintBoard(board);
         }
     }
 }
