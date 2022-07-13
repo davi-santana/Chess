@@ -10,5 +10,11 @@
             Line = line;
             Colunm = colunm;
         }
+        public override string ToString()
+        {
+            return Line
+                + ", "
+                + Colunm;
+        }
     }
 }
