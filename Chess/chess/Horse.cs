@@ -1,17 +1,17 @@
 ﻿using board;
 using System;
- 
+
+
 namespace chess
 {
-    class King : Piece
+    class Horse : Piece
     {
-        public King(Color color, Board board) : base(color, board)
+        public Horse(Color color, Board board) : base(color, board)
         {
         }
         public override string ToString()
         {
-            return "K";
+            return "H";
         }
     }
-
 }

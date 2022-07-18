@@ -16,5 +16,9 @@ namespace board
             Board = board;
             NumberMoves = 0;
         }
+        public void IncrementQntMovements()
+        {
+            NumberMoves++;
+        }
     }
 }

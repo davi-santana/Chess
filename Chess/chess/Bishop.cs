@@ -5,14 +5,15 @@ using System.Text;
 
 namespace chess
 {
-    class Tower : Piece
+    class Bishop : Piece
     {
-        public Tower(Color color, Board board) : base(color, board)
+        public Bishop(Color color, Board board) : base(color, board)
         {
         }
+
         public override string ToString()
         {
-            return "T";
+            return "B";
         }
     }
 }

@@ -24,6 +24,18 @@ namespace board
             return Pieces[pos.Line, pos.Colunm];
         }
 
+        public Piece RemovePiece(Position pos)
+        {
+            if(Piece(pos) == null)
+            {
+                return null;
+            }
+            Piece aux = Piece(pos);
+            aux.Position = null;
+            Pieces[pos.Line, pos.Colunm] = null;
+            return aux;
+        }
+
         public bool PieceExists(Position pos)
         {
             ValidatePosition(pos);

@@ -1,4 +1,5 @@
 ﻿using board;
+using chess;
 using System;
 
 namespace Chess
@@ -27,16 +28,27 @@ namespace Chess
             Console.WriteLine("  a b c d e f g h");
         }
 
+        public static ChessPosition ReadPositionChess()
+        {
+            string s = Console.ReadLine();
+            char column = s[0];
+            int line = int.Parse(s[1] + "");
+
+            return new ChessPosition(column, line);
+
+
+        }
+
       public static void PrintPiece(Piece piece)
         {
             if(piece.Color == Color.white)
             {
-                Console.WriteLine(piece);
+                Console.Write(piece);
             }
             else
             {
                 ConsoleColor aux = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write(piece);
                 Console.ForegroundColor = aux;
             }
