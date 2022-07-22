@@ -22,7 +22,7 @@ namespace chess
         public void ExecuteMovement(Position origin, Position destiny)
         {
             Piece piece = board.RemovePiece(origin);
-            piece.IncrementQntMovements();
+            piece.IncreaseMovements();
             board.RemovePiece(destiny);
             Piece capturePiece = board.RemovePiece(destiny);
             board.AddPiece(piece, destiny);

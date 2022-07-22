@@ -10,6 +10,12 @@ namespace chess
         public Queen(Color color, Board board) : base(color, board)
         {
         }
+
+        public override bool[,] PossibelMoves()
+        {
+            throw new NotImplementedException();
+        }
+
         public override string ToString()
         {
             return "Q";

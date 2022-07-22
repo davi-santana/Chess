@@ -10,6 +10,12 @@
             Line = line;
             Colunm = colunm;
         }
+
+        public void SetValues(int line, int colunm)
+        {
+            Line = line;
+            Colunm = colunm;
+        }
         public override string ToString()
         {
             return Line
