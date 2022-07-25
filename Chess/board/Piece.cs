@@ -20,7 +20,28 @@ namespace board
         {
             NumberMoves++;
         }
-        public abstract bool[,] PossibelMoves(); 
+        public bool ThereArePossibleMoves()
+        {
+            bool[,] mat = PossibelMoves();
+            for (int i = 0; i < Board.NumLines; i++)
+            {
+                for (int j = 0; j < Board.NumColumns; j++)
+                {
+                    if (mat[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool CanMoveTo(Position pos)
+        {
+            return PossibelMoves()[pos.Line, pos.Colunm]; 
+        }
+
+        public abstract bool[,] PossibelMoves();
 
     }
 }

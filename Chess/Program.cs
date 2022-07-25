@@ -14,31 +14,44 @@ namespace Chess
 
                 while (!game.Finished)
                 {
+                    try
+                    {
+                        //print board
+                        Console.Clear();
+                        Screen.PrintBoard(game.Board);
+                        Console.WriteLine($"\nShift: {game.Shift} ");
+                        Console.WriteLine($"\nwaiting for play {game.CurrentPlayer} ");
 
-                    Console.Clear();
-                    Screen.PrintBoard(game.board);
+                        Console.Write("\nOrigin: ");
+                        Position origin = Screen.ReadPositionChess().ToPosition();
+                        game.ValidatePositionOrigin(origin);
 
-                    Console.Write("\n Origin: ");
-                    Position origin = Screen.ReadPositionChess().ToPosition();
+                        bool[,] PossiblePositions = game.Board.Piece(origin).PossibelMoves();
 
-                    bool[,] PossiblePositions = game.board.Piece(origin).PossibelMoves(); 
+                        Console.Clear();
+                        Screen.PrintBoard(game.Board, PossiblePositions);
 
-                    Console.Clear();
-                    Screen.PrintBoard(game.board, PossiblePositions);
+                        Console.Write("Destiny: ");
+                        Position destiny = Screen.ReadPositionChess().ToPosition();
+                        game.ValidateTargetPosition(origin, destiny);
 
-                    Console.Write("Destiny: ");
-                    Position destiny = Screen.ReadPositionChess().ToPosition();
-
-                    game.ExecuteMovement(origin, destiny);
+                        game.MakeMove(origin, destiny);
+                    }
+                    catch(BoardException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        Console.Write("\n type enter to play again");
+                        Console.ReadLine();
+                    }
 
                 }
 
-                
 
 
-                Screen.PrintBoard(game.board);
+
+                Screen.PrintBoard(game.Board);
             }
-            catch(BoardException ex)
+            catch (BoardException ex)
             {
                 Console.WriteLine(ex.Message);
             }
