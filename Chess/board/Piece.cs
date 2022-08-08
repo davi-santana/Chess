@@ -20,6 +20,11 @@ namespace board
         {
             NumberMoves++;
         }
+
+        public void DecrementMovements()
+        {
+            NumberMoves--;
+        }
         public bool ThereArePossibleMoves()
         {
             bool[,] mat = PossibelMoves();

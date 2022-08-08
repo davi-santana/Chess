@@ -18,10 +18,8 @@ namespace Chess
                     {
                         //print board
                         Console.Clear();
-                        Screen.PrintBoard(game.Board);
-                        Console.WriteLine($"\nShift: {game.Shift} ");
-                        Console.WriteLine($"\nwaiting for play {game.CurrentPlayer} ");
-
+                        Screen.PrintMatch(game);
+                        
                         Console.Write("\nOrigin: ");
                         Position origin = Screen.ReadPositionChess().ToPosition();
                         game.ValidatePositionOrigin(origin);

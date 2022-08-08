@@ -1,6 +1,7 @@
 ﻿using board;
 using chess;
 using System;
+using System.Collections.Generic;
 
 namespace Chess
 {
@@ -28,6 +29,42 @@ namespace Chess
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("  a b c d e f g h");
             Console.ResetColor();
+        }
+
+        public static void PrintMatch(ChessGame game)
+        {
+            Screen.PrintBoard(game.Board);
+            PrintCapturedPiece(game);
+            Console.WriteLine($"\nShift: {game.Shift} ");
+            Console.WriteLine($"\nwaiting for play {game.CurrentPlayer} ");
+            if (game.Check)
+            {
+                Console.WriteLine("CHECK!");
+            }
+        }
+
+        public static void PrintCapturedPiece(ChessGame game)
+        {
+            Console.WriteLine("\nCaptured pieces: ");
+            Console.Write("Whites: ");
+            PrintSet(game.CapturedPieces(Color.white));
+            Console.WriteLine();
+            Console.Write("Blacks: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            PrintSet(game.CapturedPieces(Color.black));
+            Console.ForegroundColor = aux;
+
+        }
+
+        public static void PrintSet(HashSet<Piece> set)
+        {
+            Console.Write("[");
+            foreach(Piece piece in set)
+            {
+                Console.Write(piece + " ");
+            }
+            Console.Write("] ");
         }
         public static void PrintBoard(Board board, bool[,] possiblePositions)
         {
